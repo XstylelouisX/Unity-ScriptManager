@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class PrefabSpawnManager : MonoBehaviour {
 
-    public GameObject antidote; //生成物件
+    public GameObject spawnObject; //生成物件
+    public bool startLoad = false;
     public bool loopSpawn = false; //是否循環生成
     public bool randomSpawn = false; //是否生成位置為亂數
     public int spawnNumber = 0; //生成數量
@@ -33,7 +34,10 @@ public class PrefabSpawnManager : MonoBehaviour {
 
     private void Start()
     {
-        StartSpawn();
+        if (startLoad == true)
+        {
+            StartSpawn();
+        }
     }
 
     /// <summary>
@@ -97,11 +101,11 @@ public class PrefabSpawnManager : MonoBehaviour {
             if (randomSpawn == true)
             {
                 //print("生成位置：" + random[i]);
-                recordSpawn.Add(Instantiate(antidote, spawnPos[random[i]]));
+                recordSpawn.Add(Instantiate(spawnObject, spawnPos[random[i]]));
             }
             else
             {
-                recordSpawn.Add(Instantiate(antidote, spawnPos[i]));
+                recordSpawn.Add(Instantiate(spawnObject, spawnPos[i]));
             }
         }
         isSpawn = false;
