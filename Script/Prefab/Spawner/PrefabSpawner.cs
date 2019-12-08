@@ -1,14 +1,14 @@
 ﻿//Creator:HUANG YU XIANG
 //Date:2019/12/02
-//Update:2019/12/02
+//Update:2019/12/08
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrefabSpawnManager : MonoBehaviour {
+public class PrefabSpawner : MonoBehaviour {
 
     public GameObject spawnObject; //生成物件
-    public bool startLoad = false;
+    public bool startLoad = false; //是否載入生成
     public bool loopSpawn = false; //是否循環生成
     public bool randomSpawn = false; //是否生成位置為亂數
     public int spawnNumber = 0; //生成數量
@@ -18,19 +18,6 @@ public class PrefabSpawnManager : MonoBehaviour {
     private List<GameObject> recordSpawn = new List<GameObject>(); //紀錄生成物件
     private int listCount = 0;
     private bool isSpawn = false; //是否生成
-
-    public static PrefabSpawnManager _instance;
-    public static PrefabSpawnManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<PrefabSpawnManager>();
-            }
-            return _instance;
-        }
-    }
 
     private void Start()
     {
